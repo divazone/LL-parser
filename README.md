@@ -24,4 +24,4 @@ production.cpp為定義grammer放置的容器，定義出LHS和RHS
 為 LHS (left-hand side) -> RHS (right-hand side)
 
 demo圖
-![solarized LLparser](https://github.com/divazone/LL-parser/pic.png)
+![solarized LLparser](https://github.com/divazone/LL-parser/blob/master/pic.png)
