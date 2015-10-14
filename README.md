@@ -1,4 +1,4 @@
-LL parser說明文件
+**LL parser說明文件**
 
 此LL paser目前只能LL(1)的部分，並且是以課本上的範例來進行測試
 
@@ -22,3 +22,6 @@ terminals.cpp為檢查語句內容
 
 production.cpp為定義grammer放置的容器，定義出LHS和RHS
 為 LHS (left-hand side) -> RHS (right-hand side)
+
+demo圖
+![solarized LLparser](https://github.com/divazone/LL-parser/pic.png)
