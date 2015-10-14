@@ -1,0 +1,15 @@
+Prog > Dcls Stmts $
+Dcls > Dcl Dcls
+Dcls > #
+Dcl > fdcl id
+Dcl > intdcl id
+Stmts > Stmt Stmts
+Stmts > #
+Stmt > id assign Val Expr
+Stmt > print id
+Expr > plus Val Expr
+Expr > minus Val Expr
+Expr > #
+Val > id
+Val > inum
+Val > fnum

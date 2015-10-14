@@ -1,0 +1,1 @@
+fdcl id intdcl id id assign inum id assign id plus fnum print id $

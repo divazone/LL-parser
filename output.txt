@@ -1,0 +1,449 @@
+terminals result ===================
+Terminals:
+($)   (assign)   (fdcl)   (fnum)   (id)   (intdcl)   (inum)   (minus)   (plus)   (print)   
+Non-Terminals:
+(Dcl)   (Dcls)   (Expr)   (Prog)   (Stmt)   (Stmts)   (Val)   
+Nullable:
+(Dcls)   (Expr)   (Stmts)   
+====================================
+first and follow set result ========
+first($)=	{($)  }
+first(Dcl)=	{(fdcl)  (intdcl)  }
+first(Dcls)=	{(#)  (fdcl)  (intdcl)  }
+first(Expr)=	{(#)  (minus)  (plus)  }
+first(Prog)=	{($)  (fdcl)  (id)  (intdcl)  (print)  }
+first(Stmt)=	{(id)  (print)  }
+first(Stmts)=	{(#)  (id)  (print)  }
+first(Val)=	{(fnum)  (id)  (inum)  }
+first(assign)=	{(assign)  }
+first(fdcl)=	{(fdcl)  }
+first(fnum)=	{(fnum)  }
+first(id)=	{(id)  }
+first(intdcl)=	{(intdcl)  }
+first(inum)=	{(inum)  }
+first(minus)=	{(minus)  }
+first(plus)=	{(plus)  }
+first(print)=	{(print)  }
+
+follow(Dcl)=	{($)  (fdcl)  (id)  (intdcl)  (print)  }
+follow(Dcls)=	{($)  (id)  (print)  }
+follow(Expr)=	{($)  (id)  (print)  }
+follow(Stmt)=	{($)  (id)  (print)  }
+follow(Stmts)=	{($)  }
+follow(Val)=	{($)  (id)  (minus)  (plus)  (print)  }
+
+====================================
+ ll table result ===================
+  ( 1). Prog > Dcls Stmts $
+  ( 2). Dcls > Dcl Dcls
+  ( 3). Dcls > #
+  ( 4). Dcl > fdcl id
+  ( 5). Dcl > intdcl id
+  ( 6). Stmts > Stmt Stmts
+  ( 7). Stmts > #
+  ( 8). Stmt > id assign Val Expr
+  ( 9). Stmt > print id
+  (10). Expr > plus Val Expr
+  (11). Expr > minus Val Expr
+  (12). Expr > #
+  (13). Val > id
+  (14). Val > inum
+  (15). Val > fnum
+
+-----------------------------------------------------------------------------------------
+|		|$	|fdcl	|fnum	|id	|intdcl	|inum	|minus	|plus	|print	|
+-----------------------------------------------------------------------------------------
+|Dcl		|    	|4	|    	|    	|5	|    	|    	|    	|    	|
+|Dcls		|3	|2	|    	|3	|2	|    	|    	|    	|3	|
+|Expr		|12	|    	|    	|12	|    	|    	|11	|10	|12	|
+|Prog		|1	|1	|    	|1	|1	|    	|    	|    	|1	|
+|Stmt		|    	|    	|    	|8	|    	|    	|    	|    	|9	|
+|Stmts		|7	|    	|    	|6	|    	|    	|    	|    	|6	|
+|Val		|    	|    	|15	|13	|    	|14	|    	|    	|    	|
+-----------------------------------------------------------------------------------------
+====================================
+----Status------------------------------------
+Stack :
+bottom [ 	Prog ] top
+Queue :
+front [ 	fdcl	id	intdcl	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Prog)	terminal symbol:(fdcl)
+----Action------------------------------------
+- Apply rule (1).Prog > Dcls Stmts $
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls ] top
+Queue :
+front [ 	fdcl	id	intdcl	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Dcls)	terminal symbol:(fdcl)
+----Action------------------------------------
+- Apply rule (2).Dcls > Dcl Dcls
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls	Dcl ] top
+Queue :
+front [ 	fdcl	id	intdcl	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Dcl)	terminal symbol:(fdcl)
+----Action------------------------------------
+- Apply rule (4).Dcl > fdcl id
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls	id	fdcl ] top
+Queue :
+front [ 	fdcl	id	intdcl	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(fdcl)	terminal symbol:(fdcl)
+----Action------------------------------------
+- Match symbol (fdcl)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls	id ] top
+Queue :
+front [ 	id	intdcl	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(id)	terminal symbol:(id)
+----Action------------------------------------
+- Match symbol (id)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls ] top
+Queue :
+front [ 	intdcl	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Dcls)	terminal symbol:(intdcl)
+----Action------------------------------------
+- Apply rule (2).Dcls > Dcl Dcls
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls	Dcl ] top
+Queue :
+front [ 	intdcl	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Dcl)	terminal symbol:(intdcl)
+----Action------------------------------------
+- Apply rule (5).Dcl > intdcl id
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls	id	intdcl ] top
+Queue :
+front [ 	intdcl	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(intdcl)	terminal symbol:(intdcl)
+----Action------------------------------------
+- Match symbol (intdcl)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls	id ] top
+Queue :
+front [ 	id	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(id)	terminal symbol:(id)
+----Action------------------------------------
+- Match symbol (id)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Dcls ] top
+Queue :
+front [ 	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Dcls)	terminal symbol:(id)
+----Action------------------------------------
+- Apply rule (3).Dcls > #
+--- Ignore null in rhs
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts ] top
+Queue :
+front [ 	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Stmts)	terminal symbol:(id)
+----Action------------------------------------
+- Apply rule (6).Stmts > Stmt Stmts
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Stmt ] top
+Queue :
+front [ 	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Stmt)	terminal symbol:(id)
+----Action------------------------------------
+- Apply rule (8).Stmt > id assign Val Expr
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	Val	assign	id ] top
+Queue :
+front [ 	id	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(id)	terminal symbol:(id)
+----Action------------------------------------
+- Match symbol (id)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	Val	assign ] top
+Queue :
+front [ 	assign	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(assign)	terminal symbol:(assign)
+----Action------------------------------------
+- Match symbol (assign)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	Val ] top
+Queue :
+front [ 	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Val)	terminal symbol:(inum)
+----Action------------------------------------
+- Apply rule (14).Val > inum
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	inum ] top
+Queue :
+front [ 	inum	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(inum)	terminal symbol:(inum)
+----Action------------------------------------
+- Match symbol (inum)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr ] top
+Queue :
+front [ 	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Expr)	terminal symbol:(id)
+----Action------------------------------------
+- Apply rule (12).Expr > #
+--- Ignore null in rhs
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts ] top
+Queue :
+front [ 	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Stmts)	terminal symbol:(id)
+----Action------------------------------------
+- Apply rule (6).Stmts > Stmt Stmts
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Stmt ] top
+Queue :
+front [ 	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Stmt)	terminal symbol:(id)
+----Action------------------------------------
+- Apply rule (8).Stmt > id assign Val Expr
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	Val	assign	id ] top
+Queue :
+front [ 	id	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(id)	terminal symbol:(id)
+----Action------------------------------------
+- Match symbol (id)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	Val	assign ] top
+Queue :
+front [ 	assign	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(assign)	terminal symbol:(assign)
+----Action------------------------------------
+- Match symbol (assign)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	Val ] top
+Queue :
+front [ 	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(Val)	terminal symbol:(id)
+----Action------------------------------------
+- Apply rule (13).Val > id
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	id ] top
+Queue :
+front [ 	id	plus	fnum	print	id	$ ] back
+current Non-terminal:(id)	terminal symbol:(id)
+----Action------------------------------------
+- Match symbol (id)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr ] top
+Queue :
+front [ 	plus	fnum	print	id	$ ] back
+current Non-terminal:(Expr)	terminal symbol:(plus)
+----Action------------------------------------
+- Apply rule (10).Expr > plus Val Expr
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	Val	plus ] top
+Queue :
+front [ 	plus	fnum	print	id	$ ] back
+current Non-terminal:(plus)	terminal symbol:(plus)
+----Action------------------------------------
+- Match symbol (plus)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	Val ] top
+Queue :
+front [ 	fnum	print	id	$ ] back
+current Non-terminal:(Val)	terminal symbol:(fnum)
+----Action------------------------------------
+- Apply rule (15).Val > fnum
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr	fnum ] top
+Queue :
+front [ 	fnum	print	id	$ ] back
+current Non-terminal:(fnum)	terminal symbol:(fnum)
+----Action------------------------------------
+- Match symbol (fnum)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Expr ] top
+Queue :
+front [ 	print	id	$ ] back
+current Non-terminal:(Expr)	terminal symbol:(print)
+----Action------------------------------------
+- Apply rule (12).Expr > #
+--- Ignore null in rhs
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts ] top
+Queue :
+front [ 	print	id	$ ] back
+current Non-terminal:(Stmts)	terminal symbol:(print)
+----Action------------------------------------
+- Apply rule (6).Stmts > Stmt Stmts
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	Stmt ] top
+Queue :
+front [ 	print	id	$ ] back
+current Non-terminal:(Stmt)	terminal symbol:(print)
+----Action------------------------------------
+- Apply rule (9).Stmt > print id
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	id	print ] top
+Queue :
+front [ 	print	id	$ ] back
+current Non-terminal:(print)	terminal symbol:(print)
+----Action------------------------------------
+- Match symbol (print)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts	id ] top
+Queue :
+front [ 	id	$ ] back
+current Non-terminal:(id)	terminal symbol:(id)
+----Action------------------------------------
+- Match symbol (id)
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$	Stmts ] top
+Queue :
+front [ 	$ ] back
+current Non-terminal:(Stmts)	terminal symbol:($)
+----Action------------------------------------
+- Apply rule (7).Stmts > #
+--- Ignore null in rhs
+----------------------------------------------
+
+----Status------------------------------------
+Stack :
+bottom [ 	$ ] top
+Queue :
+front [ 	$ ] back
+current Non-terminal:($)	terminal symbol:($)
+----Action------------------------------------
+- Match symbol ($)
+----------------------------------------------
+
+context accepted.
+ parsing tree =================================
+- Prog
+   - Dcls
+      - Dcl
+         - fdcl == fdcl
+         - id == id
+      - Dcls
+         - Dcl
+            - intdcl == intdcl
+            - id == id
+         - Dcls
+            - # == #
+   - Stmts
+      - Stmt
+         - id == id
+         - assign == assign
+         - Val
+            - inum == inum
+         - Expr
+            - # == #
+      - Stmts
+         - Stmt
+            - id == id
+            - assign == assign
+            - Val
+               - id == id
+            - Expr
+               - plus == plus
+               - Val
+                  - fnum == fnum
+               - Expr
+                  - # == #
+         - Stmts
+            - Stmt
+               - print == print
+               - id == id
+            - Stmts
+               - # == #
+   - $ == $
+ ==============================================
